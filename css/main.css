@@ -167,8 +167,8 @@ main {
     width: 80%;
     height: auto;
     display: inline-block;
-    mask-image: url(http://avergroupllc.com/img/clip.svg);
-    -webkit-mask-image: url(http://avergroupllc.com/img/clip.svg);
+    mask-image: url(//avergroupllc.com/img/clip.svg);
+    -webkit-mask-image: url(//avergroupllc.com/img/clip.svg);
     mask-mode: alpha;
     -webkit-mask-mode: alpha;
     mask-repeat: no-repeat;
