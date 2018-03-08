@@ -193,6 +193,8 @@ footer .copyright{
     padding: 1.5rem;
 }
 
+#ajax-contact button{display: block; width: 100%; background: #36a63f; color: #fff;}
+
 .animate.fade-in{opacity: 0;}
 
 /* Animations */

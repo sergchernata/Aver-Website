@@ -3,6 +3,7 @@ $(function() {
     var hash = window.location.hash;
 
     var $stickyHeader = $('.navbar-dark.position-fixed');
+    var $form = $('#ajax-contact');
     var $navLinks = $(".navbar-nav a");
     var $body = $("html, body");
     var $pages = $('.page');
@@ -38,6 +39,44 @@ $(function() {
         $(this).addClass('active');
 
         scrollToPage($.attr(this, 'href'));
+    });
+
+    $form.on('submit', function(event) {
+
+        event.preventDefault();
+
+        let formData = $form.serialize();
+        let $formMessages = $('#form-messages');
+
+        $.ajax({
+            type: 'POST',
+            url: $form.attr('action'),
+            data: formData
+        })
+        .done(function(response) {
+
+            $formMessages.removeClass('error');
+            $formMessages.addClass('success');
+
+            $formMessages.text(response);
+
+            $('#name').val('');
+            $('#email').val('');
+            $('#message').val('');
+
+        })
+        .fail(function(data) {
+
+            $formMessages.removeClass('success');
+            $formMessages.addClass('error');
+
+            if (data.responseText !== '') {
+                $formMessages.text(data.responseText);
+            } else {
+                $formMessages.text('Oops! An error occured and your message could not be sent.');
+            }
+        });
+
     });
 
     function navigationStatus() {
