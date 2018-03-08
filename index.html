@@ -183,12 +183,12 @@
 							<p class="mb3">Potential investors or partners, please fill out the form below.</p>
 					</div>
 				</div>
-
-				<div id="form-messages"></div>
-
 				<form id="ajax-contact" method="post" action="mailer.php">
 					<div class="row">
 						<div class="col-lg-6 offset-lg-3">
+
+							<div id="form-messages"></div>
+
 							<div class="form-group">
 								<label for="name">Name</label>
 								<input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
@@ -199,7 +199,7 @@
 							</div>
 							<div class="form-group">
 								<label for="message">Message</label>
-								<textarea class="form-control" name="message" id="message" rows="3" required></textarea>
+								<textarea class="form-control" name="message" id="message" rows="3" placeholder="Message..." required></textarea>
 							</div>
 							<button class="btn" type="submit">Send Message</button>
 						</div>
