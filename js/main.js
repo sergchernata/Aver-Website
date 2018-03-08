@@ -1,10 +1,22 @@
 $(function() {
 
+    var hash = window.location.hash;
+
     var $stickyHeader = $('.navbar-dark.position-fixed');
     var $navLinks = $(".navbar-nav a");
     var $body = $("html, body");
     var $pages = $('.page');
     var currentPage = "";
+
+    // show "page" if there is a hash
+    if(hash != '') {
+
+        updateNav(hash.substring(1));
+
+        $body.stop().animate({
+            scrollTop: $(hash).offset().top
+        }, 500);
+    }
 
     // sticky header
     $(window).scroll(function (event) {
@@ -40,8 +52,7 @@ $(function() {
 
             if(inView(elem) && page != currentPage) {
                 currentPage = page;
-                $navLinks.removeClass('active');
-                $('.navbar-nav a[href="#'+currentPage+'"]').addClass('active');
+                updateNav(currentPage);
             }
 
         });
@@ -75,6 +86,11 @@ $(function() {
 
         return (elemBottom < docViewBottom+400) && (elemTop > docViewTop-400);
 
+    }
+
+    function updateNav(page) {
+        $navLinks.removeClass('active');
+        $('.navbar-nav a[href="#'+page+'"]').addClass('active');
     }
 
     // trigger once for elements that are
