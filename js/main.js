@@ -12,10 +12,8 @@ $(function() {
     if(hash != '') {
 
         updateNav(hash.substring(1));
+        scrollToPage(hash);
 
-        $body.stop().animate({
-            scrollTop: $(hash).offset().top
-        }, 500);
     }
 
     // sticky header
@@ -39,9 +37,7 @@ $(function() {
         $navLinks.removeClass('active');
         $(this).addClass('active');
 
-        $body.stop().animate({
-            scrollTop: $($.attr(this, 'href')).offset().top
-        }, 500);
+        scrollToPage($.attr(this, 'href'));
     });
 
     function navigationStatus() {
@@ -89,8 +85,18 @@ $(function() {
     }
 
     function updateNav(page) {
+
         $navLinks.removeClass('active');
         $('.navbar-nav a[href="#'+page+'"]').addClass('active');
+
+    }
+
+    function scrollToPage(page) {
+
+        $body.stop().animate({
+            scrollTop: $(page).offset().top
+        }, 500);
+
     }
 
     // trigger once for elements that are
