@@ -3,6 +3,8 @@ $(function() {
     var $stickyHeader = $('.navbar-dark.position-fixed');
     var $navLinks = $(".navbar-nav a");
     var $body = $("html, body");
+    var $pages = $('.page');
+    var currentPage = "";
 
     // sticky header
     $(window).scroll(function (event) {
@@ -15,6 +17,7 @@ $(function() {
         }
 
         animateIn();
+        navigationStatus();
 
     });
 
@@ -29,12 +32,28 @@ $(function() {
         }, 500);
     });
 
+    function navigationStatus() {
+
+        $.each($pages, function( index, elem ) {
+
+            let page = $(elem).attr("id");
+
+            if(inView(elem) && page != currentPage) {
+                currentPage = page;
+                $navLinks.removeClass('active');
+                $('.navbar-nav a[href="#'+currentPage+'"]').addClass('active');
+            }
+
+        });
+
+    }
+
     // start css animations on elements
     // as the come into view
     function animateIn() {
 
         var $toAnimate = $('.animate:not(.start)');
-        console.log($toAnimate.length);
+
         $.each($toAnimate, function( index, elem ) {
 
             if(inView(elem)) {
@@ -54,7 +73,7 @@ $(function() {
         var elemTop = $(elem).offset().top;
         var elemBottom = elemTop + $(elem).height();
 
-        return elemTop <= docViewBottom-200;
+        return (elemBottom < docViewBottom+400) && (elemTop > docViewTop-400);
 
     }
 
