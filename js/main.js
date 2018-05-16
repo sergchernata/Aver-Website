@@ -1,6 +1,6 @@
 $(function() {
 
-    var hash = window.location.hash;
+    var hash = window.location.hash.replace('panel-', '');
 
     var $stickyHeader = $('.navbar-dark.position-fixed');
     var $form = $('#ajax-contact');
@@ -8,6 +8,7 @@ $(function() {
     var $body = $("html, body");
     var $pages = $('.page');
     var currentPage = "";
+    var scrolling = false;
 
     // show "page" if there is a hash
     if(hash != '') {
@@ -21,21 +22,28 @@ $(function() {
 
     // sticky header
     $(window).scroll(function (event) {
-        var scroll = $(window).scrollTop();
 
-        animateHeader(scroll);
-        animateIn();
-        navigationStatus();
+        if(!scrolling){
+            var scroll = $(window).scrollTop();
+
+            animateHeader(scroll);
+            animateIn();
+            navigationStatus();
+        }
 
     });
 
     // navigation page scroll
-    $navLinks.on('click', function() {
+    $navLinks.on('click', function(e) {
 
+        e.preventDefault();
+
+        scrolling = true;
         $navLinks.removeClass('active');
         $(this).addClass('active');
-
         scrollToPage($.attr(this, 'href'));
+
+        return false;
     });
 
     $form.on('submit', function(event) {
@@ -133,7 +141,7 @@ $(function() {
 
         $navLinks.removeClass('active');
         $('.navbar-nav a[href="#'+page+'"]').addClass('active');
-        window.location.hash = '#'+page;
+        window.location.hash = 'panel-'+page;
 
     }
 
@@ -141,7 +149,7 @@ $(function() {
 
         $body.stop().animate({
             scrollTop: $(page).offset().top
-        }, 500);
+        }, 500, function(){ scrolling = false; });
 
     }
 
