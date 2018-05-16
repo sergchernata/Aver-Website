@@ -11,7 +11,9 @@ $(function() {
 
     // show "page" if there is a hash
     if(hash != '') {
+        var scroll = $(window).scrollTop();
 
+        animateHeader(scroll);
         updateNav(hash.substring(1));
         scrollToPage(hash);
 
@@ -21,12 +23,7 @@ $(function() {
     $(window).scroll(function (event) {
         var scroll = $(window).scrollTop();
 
-        if(scroll >= 70) {
-            $stickyHeader.addClass('green');
-        } else {
-            $stickyHeader.removeClass('green');
-        }
-
+        animateHeader(scroll);
         animateIn();
         navigationStatus();
 
@@ -95,7 +92,7 @@ $(function() {
     }
 
     // start css animations on elements
-    // as the come into view
+    // as they come into view
     function animateIn() {
 
         var $toAnimate = $('.animate:not(.start)');
@@ -108,6 +105,15 @@ $(function() {
 
         });
 
+    }
+
+    // handle header animation (height and background color via css)
+    function animateHeader(scroll) {
+        if(scroll >= 70) {
+            $stickyHeader.addClass('green');
+        } else {
+            $stickyHeader.removeClass('green');
+        }
     }
 
     // check if element is in view
@@ -127,6 +133,7 @@ $(function() {
 
         $navLinks.removeClass('active');
         $('.navbar-nav a[href="#'+page+'"]').addClass('active');
+        window.location.hash = '#'+page;
 
     }
 
