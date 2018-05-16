@@ -297,7 +297,7 @@ main {
 }
 
 #team h3{font-size: 1.3rem; color: #37a63f; margin: 1rem 0 0 0; padding: 0;}
-#team h5{font-size: 1rem; font-weight: bold; margin: 0 0 1rem 0; color: #3d4348;}
+#team h5{font-size: 1rem; font-weight: bold; margin: 0.25rem 0 1rem 0; color: #3d4348;}
 
 #team img{
     width: 80%;
@@ -391,11 +391,12 @@ footer .copyright{
 }
 
 /* for large screens only */
-@media (mmin-width: 1200px) {
+@media (min-width: 1200px) {
 
     #team .profile {margin-bottom: 10rem;}
+    #team p{margin-left: 2rem;}
 
-    .page .container{padding-top: 20rem; padding-bottom: 20rem;}
+    .page .container{padding-top: 18rem; padding-bottom: 18rem;}
 
 }
 
