@@ -11,21 +11,29 @@
 .mb3{margin-bottom: 3rem;}
 
 .nm{margin: 0;}
+.margin-auto{margin-left: auto; margin-right: auto;}
+.inline-block{display: inline-block;}
 
 /* GENERAL */
 a.btn{
     transform: translateY(0);
     box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
+    transition: 0.5s all;
+    font-family: 'Titillium Web', sans-serif;
 }
 a.btn:hover{
     transform: translateY(-6px);
     box-shadow: 0px 8px 10px rgba(0,0,0,0.1);
+    transition: 0.5s all;
 }
 
-h1, h2{
+h1{font-size: 4rem; padding-bottom: 2rem; margin-bottom: 2rem;}
+h2{font-size: 3rem; padding-bottom: 2rem; margin-bottom: 2rem;}
+h3{font-weight: 500; color: #fff1ad; padding-bottom: 1rem;}
+h4{color: #36a63f; }
+h1, h2, h3, h4, h5{
     position: relative;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
+    font-family: 'Titillium Web', sans-serif;
 }
 h1:after, h2:after {
     content: "";
@@ -43,6 +51,9 @@ body {
     background: #343a3f;
     background-image: url('../img/pattern.svg');
     background-size: 10%;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1.1rem;
 }
 #home a{transition: all 0.3s ease;}
 #home a:hover{transition: all 0.3s ease;}
@@ -51,7 +62,7 @@ main {
 }
 
 /* HEADER NAV */
-#navbar{flex-grow: 0;}
+#navbar{flex-grow: 0; overflow: hidden;}
 #navbar a{padding-right: 1rem; padding-left: 1rem;}
 .navbar-dark.position-fixed .navbar{padding: 1.2rem 1rem; transition: all 0.3s ease;}
 .navbar-dark.position-fixed.green .navbar{padding: 0.5rem 1rem; transition: all 0.3s ease;}
@@ -62,6 +73,17 @@ main {
 .navbar-brand{padding-bottom: 0;}
 .navbar-brand svg{width: 7rem; height: auto;}
 /*.nav-container {min-height: 76px;}*/
+#navbar .active{position: relative;}
+#navbar .active::after{
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background: #fff;
+    bottom: 0;
+    left: 50%;
+}
 
 .banner{
     background: rgba(0,0,0,0);
@@ -69,9 +91,10 @@ main {
 
 .banner .btn{
     color: #fff;
-    background: #6237a0;
+    background: #36a63f;
     padding: 0.8rem 2rem;
     border-radius: 100em;
+    font-size: 1.5rem;
     margin-top: 1rem;
 }
 
@@ -83,7 +106,8 @@ main {
 
 /* CONTENT */
 
-#placeholder {
+/* Rundown */
+#overview {
     background: #ffffff;
     -webkit-transform: skewY(-8deg);
     -moz-transform: skewY(-8deg);
@@ -92,7 +116,7 @@ main {
     transform: skewY(-8deg);
 }
 
-#placeholder .container {
+#overview .container {
     background: rgba(0,0,0,0);
     -webkit-transform: skewY(8deg);
     -moz-transform: skewY(8deg);
@@ -101,13 +125,114 @@ main {
     transform: skewY(8deg);
 }
 
+#overview span {padding: 2rem 0; display: block;}
+
+#overview p{width: 80%; margin: 0 auto; display: inline-block;}
+
+/* What is Crypto */
+#what_is_crypto{
+    margin-top: -100px;
+    background: rgba(0,0,0,0);
+    color: #fff;
+}
+#what_is_crypto a.btn{
+    background: #36a63f;
+    color: #fff;
+    font-size: 1.4rem;
+    width: 13rem;
+}
+#what_is_crypto a.btn span{
+    display: block;
+    color: rgba(0,0,0,0.6);
+    font-size: 0.9rem;
+    text-transform: none;
+}
+
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+#what_is_crypto blockquote p{position: relative;}
+#what_is_crypto blockquote p::before{
+    content: '\201C';
+    position: absolute;
+    left: -3rem;
+    top: -2rem;
+    font-size: 4rem;
+}
+#what_is_crypto blockquote p::after{
+    content: '\201D';
+    position: absolute;
+    right: -3rem;
+    bottom: -4rem;
+    font-size: 4rem;
+}
+#what_is_crypto blockquote{margin: 4rem 0 0 0; color: #fff1ad; overflow: hidden;}
+#what_is_crypto blockquote img{border-radius: 25px; display: inline-block; vertical-align: baseline; margin-right: 1rem;}
+#what_is_crypto blockquote div{display: inline-block; text-align: left;}
+#what_is_crypto blockquote small{display: block;}
+#what_is_crypto blockquote p{font-size: 2rem;}
+
+/* Why Crypto */
+#why_invest {
+    background: #ffffff;
+    -webkit-transform: skewY(-8deg);
+    -moz-transform: skewY(-8deg);
+    -ms-transform: skewY(-8deg);
+    -o-transform: skewY(-8deg);
+    transform: skewY(-8deg);
+}
+
+#why_invest .container {
+    background: rgba(0,0,0,0);
+    -webkit-transform: skewY(8deg);
+    -moz-transform: skewY(8deg);
+    -ms-transform: skewY(8deg);
+    -o-transform: skewY(8deg);
+    transform: skewY(8deg);
+}
+
+#why_invest .tableWrap{
+    border: 3px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 2rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#why_invest table{
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+#why_invest table .category{
+    text-align: right;
+}
+
+#why_invest table .highlight {
+    background: rgba(254, 240, 172, 0.25);
+}
+
+
 /* Paper */
 #paper{
     margin-top: -100px;
     background: rgba(0,0,0,0);
     color: #fff;
 }
-#paper p{margin-bottom: 4rem;}
 #paper a.btn{
     background: #36a63f;
     color: #fff;
@@ -169,7 +294,9 @@ main {
     width: 70%;
 }
 
-#team h3{font-size: 1.3rem; color: #37a63f; margin: 1rem 0;}
+#team h3{font-size: 1.3rem; color: #37a63f; margin: 1rem 0 0 0; padding: 0;}
+#team h5{font-size: 1rem; font-weight: bold; margin: 0 0 1rem 0; color: #3d4348;}
+#team figure p{text-align: justify; font-size: 0.9rem;}
 
 #team img{
     width: 80%;
@@ -185,10 +312,6 @@ main {
     -webkit-mask-size: cover;
     mask-position: center;
     -webkit-mask-position: center;
-}
-
-#team p{
-    font-size: 0.9rem;
 }
 
 footer {
@@ -253,4 +376,17 @@ footer .copyright{
 @keyframes SLIDE-IN-FROM-TOP {
   0%   { opacity: 0; transform: translateY(-30px); }
   100% { opacity: 1; transform: translateY(0px); }
+}
+
+@media (max-width: 575.98px) {
+
+    h1{font-size: 3rem; padding-bottom: 1rem; margin-bottom:1rem;}
+    h2{font-size: 2rem; padding-bottom: 1rem; margin-bottom: 1rem;}
+    h3{font-weight: 500; color: #fff1ad; padding-bottom: 0.5rem;}
+
+    #paper a.btn {    
+        display: block;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
 }
