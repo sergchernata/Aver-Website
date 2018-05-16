@@ -133,7 +133,7 @@ $(function() {
         var elemTop = $(elem).offset().top;
         var elemBottom = elemTop + $(elem).height();
 
-        return (elemBottom < docViewBottom+400) && (elemTop > docViewTop-400);
+        return (elemBottom < docViewBottom+450) && (elemTop > docViewTop-450);
 
     }
 
