@@ -23,10 +23,10 @@ $(function() {
     // sticky header
     $(window).scroll(function (event) {
 
-        if(!scrolling){
-            var scroll = $(window).scrollTop();
+        var scroll = $(window).scrollTop();
+        animateHeader(scroll);
 
-            animateHeader(scroll);
+        if(!scrolling){
             animateIn();
             navigationStatus();
         }
@@ -42,6 +42,9 @@ $(function() {
         $navLinks.removeClass('active');
         $(this).addClass('active');
         scrollToPage($.attr(this, 'href'));
+
+        // mobile nav
+        $('.navbar-collapse.collapse').removeClass('show');
 
         return false;
     });
