@@ -176,17 +176,21 @@ main {
     position: absolute;
     left: -3rem;
     top: -2rem;
-    font-size: 4rem;
+    font-size: 4.5rem;
+    font-family: Georgia, serif;
+    color: #36a63f;
 }
 #what_is_crypto blockquote p::after{
     content: '\201D';
     position: absolute;
     right: -3rem;
     bottom: -4rem;
-    font-size: 4rem;
+    font-size: 4.5rem;
+    font-family: Georgia, serif;
+    color: #36a63f;
 }
-#what_is_crypto blockquote{margin: 4rem 0 0 0; color: #fff1ad; overflow: hidden;}
-#what_is_crypto blockquote img{border-radius: 25px; display: inline-block; vertical-align: baseline; margin-right: 1rem;}
+#what_is_crypto blockquote{margin: 4rem 0 0 0; color: #fff1ad;}
+#what_is_crypto blockquote img{border-radius: 30px; display: inline-block; vertical-align: baseline; margin-right: 1rem;}
 #what_is_crypto blockquote div{display: inline-block; text-align: left;}
 #what_is_crypto blockquote small{display: block;}
 #what_is_crypto blockquote p{font-size: 2rem;}
@@ -244,6 +248,7 @@ main {
     color: #fff;
     font-size: 1.4rem;
     width: 13rem;
+    border-radius: 4rem;
 }
 #paper a.btn span{
     display: block;
@@ -411,6 +416,8 @@ footer .copyright{
     .navbar-nav{padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.25);}
     .nav-item{margin-bottom: 1.5rem;}
     .nav-link{text-align: center;}
+
+    #what_is_crypto blockquote{overflow: hidden;}
 
     #paper a.btn {
         display: block;
