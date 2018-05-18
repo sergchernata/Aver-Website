@@ -93,7 +93,7 @@ $(() => {
 
             let page = $(elem).attr("id");
 
-            if(inView(elem) && page != currentPage) {
+            if(inView(elem, true) && page != currentPage) {
                 currentPage = page;
                 updateNav(currentPage);
             }
@@ -110,7 +110,7 @@ $(() => {
 
         $.each($toAnimate, (index, elem) => {
 
-            if(inView(elem)) {
+            if(inView(elem, false)) {
                 $(elem).addClass('start');
             }
 
@@ -128,16 +128,25 @@ $(() => {
     }
 
     // check if element is in view
-    function inView(elem) {
+    function inView(elem, section = false) {
 
         const docViewTop = $(window).scrollTop();
         const docViewBottom = docViewTop + $(window).height();
         const midPoint = docViewTop + ( $(window).height() / 2 );
 
-        const elemTop = $(elem).offset().top;
-        const elemBottom = elemTop + $(elem).height();
+        if(section) {
 
-        return (elemTop < midPoint) && (elemBottom > midPoint);
+            const elemTop = $(elem).find('.container').offset().top;
+            const elemBottom = elemTop + $(elem).find('.container').height();
+            return (elemTop < midPoint) && (elemBottom > midPoint);
+
+        } else {
+
+            const elemTop = $(elem).offset().top;
+            const elemBottom = elemTop + $(elem).height();
+            return (elemBottom < docViewBottom+200) && (elemTop > docViewTop-200);
+
+        }
 
     }
 
