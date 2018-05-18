@@ -1,18 +1,18 @@
-$(function() {
+$(() => {
 
-    var hash = window.location.hash.replace('panel-', '');
+    const hash = window.location.hash.replace('panel-', '');
 
-    var $stickyHeader = $('.navbar-dark.position-fixed');
-    var $form = $('#ajax-contact');
-    var $navLinks = $(".navbar-nav a");
-    var $body = $("html, body");
-    var $pages = $('.page');
-    var currentPage = "";
-    var scrolling = false;
+    const $stickyHeader = $('.navbar-dark.position-fixed');
+    const $form = $('#ajax-contact');
+    const $navLinks = $(".navbar-nav a");
+    const $body = $("html, body");
+    const $pages = $('.page');
+    let currentPage = "";
+    let scrolling = false;
 
     // show "page" if there is a hash
     if(hash != '') {
-        var scroll = $(window).scrollTop();
+        const scroll = $(window).scrollTop();
 
         animateHeader(scroll);
         updateNav(hash.substring(1));
@@ -21,9 +21,9 @@ $(function() {
     }
 
     // sticky header
-    $(window).scroll(function (event) {
+    $(window).scroll(event => {
 
-        var scroll = $(window).scrollTop();
+        const scroll = $(window).scrollTop();
         animateHeader(scroll);
 
         if(!scrolling){
@@ -49,7 +49,7 @@ $(function() {
         return false;
     });
 
-    $form.on('submit', function(event) {
+    $form.on('submit', event => {
 
         event.preventDefault();
 
@@ -61,7 +61,7 @@ $(function() {
             url: $form.attr('action'),
             data: formData
         })
-        .done(function(response) {
+        .done(response => {
 
             $formMessages.removeClass('error');
             $formMessages.addClass('success');
@@ -73,7 +73,7 @@ $(function() {
             $('#message').val('');
 
         })
-        .fail(function(data) {
+        .fail(data => {
 
             $formMessages.removeClass('success');
             $formMessages.addClass('error');
@@ -89,7 +89,7 @@ $(function() {
 
     function navigationStatus() {
 
-        $.each($pages, function( index, elem ) {
+        $.each($pages, (index, elem) => {
 
             let page = $(elem).attr("id");
 
@@ -106,9 +106,9 @@ $(function() {
     // as they come into view
     function animateIn() {
 
-        var $toAnimate = $('.animate:not(.start)');
+        const $toAnimate = $('.animate:not(.start)');
 
-        $.each($toAnimate, function( index, elem ) {
+        $.each($toAnimate, (index, elem) => {
 
             if(inView(elem)) {
                 $(elem).addClass('start');
@@ -130,21 +130,22 @@ $(function() {
     // check if element is in view
     function inView(elem) {
 
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
+        const docViewTop = $(window).scrollTop();
+        const docViewBottom = docViewTop + $(window).height();
+        const midPoint = docViewTop + ( $(window).height() / 2 );
 
-        var elemTop = $(elem).offset().top;
-        var elemBottom = elemTop + $(elem).height();
+        const elemTop = $(elem).offset().top;
+        const elemBottom = elemTop + $(elem).height();
 
-        return (elemBottom < docViewBottom+450) && (elemTop > docViewTop-450);
+        return (elemTop < midPoint) && (elemBottom > midPoint);
 
     }
 
     function updateNav(page) {
 
         $navLinks.removeClass('active');
-        $('.navbar-nav a[href="#'+page+'"]').addClass('active');
-        window.location.hash = 'panel-'+page;
+        $(`.navbar-nav a[href="#${page}"]`).addClass('active');
+        window.location.hash = `panel-${page}`;
 
     }
 
@@ -152,7 +153,7 @@ $(function() {
 
         $body.stop().animate({
             scrollTop: $(page).offset().top
-        }, 500, function(){ scrolling = false; });
+        }, 500, () => { scrolling = false; });
 
     }
 
