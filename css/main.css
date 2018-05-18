@@ -420,6 +420,7 @@ footer .copyright{
     h2{font-size: 2rem; padding-bottom: 1rem; margin-bottom: 1rem;}
     h3{font-weight: 500; color: #fff1ad; padding-bottom: 0.5rem;}
 
+    #navbar a{overflow: hidden;}
     .navbar-nav{padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.25);}
     .nav-item{margin-bottom: 1.5rem;}
     .nav-link{text-align: center;}
