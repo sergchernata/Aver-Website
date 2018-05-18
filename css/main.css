@@ -68,8 +68,23 @@ main {
 }
 
 /* HEADER NAV */
-#navbar{flex-grow: 0; overflow: hidden;}
-#navbar a{padding-right: 1rem; padding-left: 1rem;}
+.navbar-dark{overflow: hidden;}
+#navbar{flex-grow: 0;}
+#navbar a{padding-right: 1rem; padding-left: 1rem; transition: 0.5s all; position: relative;}
+#navbar a::after{
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background: #fff;
+    bottom: -2rem;
+    left: 50%;
+    transition: 0.5s all;
+}
+#navbar a.active::after{
+    bottom: 0;
+}
 .navbar-dark.position-fixed .navbar{padding: 1.2rem 1rem; transition: all 0.3s ease;}
 .navbar-dark.position-fixed.green .navbar{padding: 0.5rem 1rem; transition: all 0.3s ease;}
 .navbar-dark.position-fixed{border-top: 4px solid #36a63f; background: #343a3f; transition: all 0.3s ease;}
@@ -78,18 +93,6 @@ main {
 .navbar-dark.position-fixed.green .logo{fill: #ffffff; transition: all 0.3s ease;}
 .navbar-brand{padding-bottom: 0;}
 .navbar-brand svg{width: 7rem; height: auto;}
-/*.nav-container {min-height: 76px;}*/
-#navbar .active{position: relative;}
-#navbar .active::after{
-    position: absolute;
-    content: '';
-    width: 4px;
-    height: 4px;
-    border-radius: 100%;
-    background: #fff;
-    bottom: 0;
-    left: 50%;
-}
 
 .banner{
     background: rgba(0,0,0,0);
@@ -408,6 +411,10 @@ footer .copyright{
 
 /* for small screens only */
 @media (max-width: 575.98px) {
+
+    body {
+        background-size: 40%;
+    }
 
     h1{font-size: 3rem; padding-bottom: 1rem; margin-bottom:1rem;}
     h2{font-size: 2rem; padding-bottom: 1rem; margin-bottom: 1rem;}
