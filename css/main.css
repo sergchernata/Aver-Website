@@ -136,7 +136,27 @@ main {
     transform: skewY(8deg);
 }
 
-#overview span {padding: 2rem 0; display: block;}
+#overview img{
+    display: block;
+    margin: 0 auto 2rem auto;
+    width: 10rem;
+    height: auto;
+}
+
+#overview span {
+    padding: 2rem 0;
+    display: block;
+    border: 2px solid #eee;
+    border-radius: 1rem;
+    margin: 2rem 0 0 0;
+    transition: 0.5s all;
+    transform: translateY(0);
+}
+
+#overview span:hover {
+    transition: 0.5s all;
+    transform: translateY(-1rem);
+}
 
 #overview p{width: 80%; margin: 0 auto; display: inline-block;}
 
